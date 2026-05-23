@@ -1,0 +1,8 @@
+extends ../layouts/main.pug
+include ../mixins/components.pug
+
+block content
+  h2 Текущие остатки товаров
+  table#stockTable
+    +table-header('Наименование', 'Количество (шт.)')
+    tbody

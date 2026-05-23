@@ -1,0 +1,26 @@
+extends ../layouts/main.pug
+
+block content
+  h2 Оформление операции
+  #errorMessage.error-box(style="display: none;")
+  #successMessage.success-box(style="display: none;")
+  
+  form#operationForm
+    .form-group
+      label(for="type") Тип операции:
+      select#type(name="type")
+        option(value="income") Приход
+        option(value="outcome") Расход
+    .form-group
+      label(for="name") Наименование товара:
+      input#name(type="text" name="name" required)
+    .form-group
+      label(for="qty") Количество:
+      input#qty(type="number" name="qty" min="1" required)
+    .form-group
+      label(for="price") Цена за шт.:
+      input#price(type="number" name="price" min="0")
+    .form-group
+      label#contactLabel(for="contact") От кого:
+      input#contact(type="text" name="contact" required)
+    button(type="submit") Сохранить

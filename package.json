@@ -1,7 +1,7 @@
 {
   "name": "warehouse_app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Складской учет",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"

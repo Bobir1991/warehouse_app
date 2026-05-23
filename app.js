@@ -1,15 +1,27 @@
-const express = require("express");
+const express = require('express');
+const pageRoutes = require('./routes/pageRoutes');
+const apiRoutes = require('./routes/apiRoutes');
+
 const app = express();
 
-app.set("view engine", "pug");
-app.set("views", "./views");
+app.set('view engine', 'pug');
+app.set('views', './views');
 
-app.use(express.urlencoded({extended: true})); // для html форм
-app.use(express.static("./public")) // для js, css, jpg
-app.use(express.json()); // чтение данных JSON
+app.use(express.static('./public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get("/", (req, res)=>{res.send("Сервер работает")});
+app.use('/', pageRoutes);
+app.use('/api', apiRoutes);
 
-app.listen(3000, ()=>{
-    console.log("Сервер запущен на http://localhost:3000")
+app.use((err, req, res, next) => {
+  console.error('Логирование ошибки:', err.message);
+  const status = err.statusCode || 500;
+  res.status(status).json({ 
+    error: err.message || 'Внутренняя ошибка сервера' 
+  });
+});
+
+app.listen(3000, () => {
+  console.log(`Сервер запущен: http://localhost:3000`);
 });

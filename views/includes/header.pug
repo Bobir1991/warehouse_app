@@ -1,0 +1,9 @@
+include ../mixins/components.pug
+header
+  h1 Учет на складе
+  nav
+    ul
+      +nav-item('/', 'Остатки', path)
+      +nav-item('/operations', 'Движение', path)
+      +nav-item('/add', 'Добавить', path)
+      +nav-item('/about', 'О программе', path)

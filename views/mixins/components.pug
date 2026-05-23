@@ -1,0 +1,9 @@
+mixin nav-item(href, text, currentPath)
+  li
+    a(href=href class=(currentPath === href ? 'active' : ''))= text
+
+mixin table-header(...columns)
+  thead
+    tr
+      each col in columns
+        th= col
